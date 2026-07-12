@@ -7,8 +7,8 @@ A web application that accepts a PDF containing questions and answers, then crea
 
 ## Current progress
 
-Part 1 complete: FastAPI backend foundation and health-check endpoint.
-
+- Part 1 complete: FastAPI backend foundation and health-check endpoint.
+- Part 2 complete: PDF text extraction using PyMuPDF.
 ## Tech stack
 
 - Python
