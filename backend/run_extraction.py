@@ -1,28 +1,45 @@
 from pathlib import Path
 
 from app.services.pdf_reader import extract_text_from_pdf
+from app.services.qa_parser import split_questions_and_answers
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 INPUT_PDF = PROJECT_ROOT / "backend" / "local_samples" / "sample.pdf"
-OUTPUT_TEXT = PROJECT_ROOT / "backend" / "local_samples" / "extracted_text.txt"
+EXTRACTED_TEXT = PROJECT_ROOT / "backend" / "local_samples" / "extracted_text.txt"
+QUESTIONS_TEXT = PROJECT_ROOT / "backend" / "local_samples" / "questions.txt"
+ANSWERS_TEXT = PROJECT_ROOT / "backend" / "local_samples" / "answers.txt"
 
 
 def main() -> None:
     try:
         extracted_text = extract_text_from_pdf(INPUT_PDF)
+        question_answers = split_questions_and_answers(extracted_text)
     except (FileNotFoundError, ValueError) as error:
         print(f"Error: {error}")
         return
+    
+    EXTRACTED_TEXT.write_text(extracted_text, encoding="utf-8")
 
-    OUTPUT_TEXT.write_text(extracted_text, encoding="utf-8")
+    questions_only = "\n\n".join(
+        f"{item.number}. {item.question}"
+        for item in question_answers
+    )
 
-    print(f"Text extracted successfully from: {INPUT_PDF}")
-    print(f"Saved extracted text to: {OUTPUT_TEXT}")
-    print("\nFirst 500 characters:\n")
-    print(extracted_text[:500])
+    answers_only = "\n\n".join(
+        f"{item.number}. {item.answer}"
+        for item in question_answers
+    )
 
+    QUESTIONS_TEXT.write_text(questions_only, encoding="utf-8")
+    ANSWERS_TEXT.write_text(answers_only, encoding="utf-8")
+
+    print(f"Found {len(question_answers)} question-answer pairs.")
+    print(f"Questions saved to: {QUESTIONS_TEXT}")
+    print(f"Answers saved to: {ANSWERS_TEXT}")
+    print("\nFirst question:")
+    print(questions_only.split("\n\n")[0])
 
 if __name__ == "__main__":
     main()
