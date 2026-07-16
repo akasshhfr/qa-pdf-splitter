@@ -8,7 +8,7 @@ class QuestionAnswer:
     answer: str
 
 QUESTION_ANSWER_PATTERN = re.compile(
-    r"(?m)^(\d+)\.\s+(.+?)\s*\nAns:\s*([\s\S]*?)(?=^\d+\.\s+|\Z)"
+    r"(?m)^Q?(\d+)\.\s+(.+?)\s*\nAns:\s([\s\S]*?)(?=^Q?\d+\.\s+|\Z)"
 )
 
 def split_questions_and_answers(text:str) -> list[QuestionAnswer]:
@@ -37,4 +37,6 @@ def split_questions_and_answers(text:str) -> list[QuestionAnswer]:
             )
         )
     
+    question_answer.sort(key=lambda item: item.number)
+
     return question_answer

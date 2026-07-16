@@ -19,17 +19,17 @@ def main() -> None:
     except (FileNotFoundError, ValueError) as error:
         print(f"Error: {error}")
         return
-    
+
     EXTRACTED_TEXT.write_text(extracted_text, encoding="utf-8")
 
     questions_only = "\n\n".join(
-        f"{item.number}. {item.question}"
-        for item in question_answers
+    f"{index}. {item.question}"
+    for index, item in enumerate(question_answers, start=1)
     )
 
     answers_only = "\n\n".join(
-        f"{item.number}. {item.answer}"
-        for item in question_answers
+    f"{index}. {item.answer}"
+    for index, item in enumerate(question_answers, start=1)
     )
 
     QUESTIONS_TEXT.write_text(questions_only, encoding="utf-8")
@@ -43,3 +43,11 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+# task1: to sort the questions and answers in serial number ✅
+# task2: i give questions and answers seperrately, it should combine them with the correct answer match (given serial number for bith Q & A)
+# task3: task2 should also be in sorted order, numerically
+# task4: make a question paper generator
+# task5: calculate the time taken to seperate/merge 2000 questions with answers of 7 lines each (make a noting of time taken to seperate or merge)
+# task6: try to make task5 efficient 
