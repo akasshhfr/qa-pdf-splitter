@@ -4,6 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.services.pdf_reader import extract_text_from_pdf
 from app.services.qa_parser import split_questions_and_answers
@@ -14,6 +15,13 @@ app = FastAPI(
     title="Q&A PDF Splitter API",
     description="API for separating questions and answers from a PDF.",
     version="0.1.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/health")
@@ -107,6 +115,13 @@ async def merge_pdfs(
             answer_items = parse_numbered_items(a_text)
         except ValueError as error:
             raise HTTPException(status_code=400, detail=str(error))
+        
+        q_marks = sum(1 for item in question_items if item.text.strip().endswith("?"))
+        a_marks = sum(1 for item in answer_items if item.text.strip().endswith("?"))
+
+        if a_marks > q_marks:
+            question_items, answer_items = answer_items, question_items
+
         merged = merge_questions_and_answers(question_items, answer_items)
         combined_path = temp_dir_path / "combined_qa.pdf"
         generate_combined_pdf(merged, combined_path)
