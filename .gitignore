@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .env
 backend/local_samples/
+frontend/node_modules/
+frontend/dist/

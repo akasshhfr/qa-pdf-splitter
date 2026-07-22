@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* ===== CSS VARIABLES (Design Tokens) ===== */
+:root {
+  --bg-primary: #0a0a1a;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0c0;
+  --text-muted: #6a6a8a;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(139, 92, 246, 0.4);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
+}
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ===== BODY ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(160deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+/* ===== ROOT CONTAINER ===== */
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+/* ===== LOADING SPINNER ===== */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
