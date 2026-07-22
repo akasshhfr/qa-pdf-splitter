@@ -1,63 +1,76 @@
-# Q&A PDF Splitter
+# Q&A PDF Splitter & Merger
 
-A full-stack web app to **split** a combined Q&A PDF into separate question and answer PDFs, or **merge** two separate PDFs back into one.
+An AI-powered document processing application that extracts questions and answers from PDF files, separates them into structured outputs, and generates independent question and answer documents.
 
 ## Features
 
-- **Split** — Upload one PDF with numbered Q&As → get a ZIP with `questions.pdf` + `answers.pdf`
-- **Merge** — Upload two separate PDFs (questions + answers) → get one combined PDF
-- Dark-themed React UI with glassmorphism, tab navigation, drag-to-upload, loading states, and error handling
+* Extract text from PDF documents
+* Detect numbered questions and corresponding answers
+* Separate questions and answers automatically
+* Generate dedicated Question and Answer files
+* FastAPI backend for document processing
+* Modular architecture for future AI and OCR enhancements
+* Support for structured educational and assessment PDFs
 
 ## Tech Stack
 
-| Layer | Tech |
-|---|---|
-| Backend | Python, FastAPI, Uvicorn |
-| PDF Read | PyMuPDF |
-| PDF Write | fpdf2 |
-| Frontend | React, Vite |
-| Styling | Vanilla CSS (Inter font, dark theme) |
+* Python
+* FastAPI
+* PyMuPDF
+* Regular Expressions (Regex)
+* Git & GitHub
 
-## API
+## Current Workflow
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/health` | Health check |
-| POST | `/upload` | Split a Q&A PDF → ZIP |
-| POST | `/merge` | Merge two PDFs → combined PDF |
-
-## Run Locally
-
-**Backend** (terminal 1):
-
-```powershell
-cd backend
-python -m venv ../.venv
-../.venv/Scripts/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+```text
+PDF Upload
+    ↓
+Text Extraction
+    ↓
+Question-Answer Detection
+    ↓
+Question Separation
+    ↓
+Answer Separation
+    ↓
+Output Generation
 ```
 
-**Frontend** (terminal 2):
+## Project Structure
 
-```powershell
-cd frontend
-npm install
-npm run dev
+```text
+backend/
+├── app/
+│   ├── main.py
+│   └── services/
+│       ├── pdf_reader.py
+│       └── qa_parser.py
+├── local_samples/
+├── requirements.txt
+└── run_extraction.py
 ```
 
-Open `http://localhost:5173` — backend runs on `http://localhost:8000`.
+## Future Enhancements
 
-## Supported Format
+* PDF generation for separated outputs
+* PDF merge functionality
+* Frontend dashboard
+* OCR support for scanned PDFs
+* Multiple question-answer format support
+* AI-assisted document validation
+* Cloud deployment
 
-```
-1. What is Python?
-Ans: Python is a programming language.
-```
+## Learning Outcomes
 
-Numbered questions (`1.`, `2.`, ...) followed by `Ans:` answers.
+Through this project, I gained hands-on experience with:
 
-## Limitations
+* FastAPI backend development
+* PDF processing and text extraction
+* Regex-based text parsing
+* Modular Python application design
+* File handling and automation
+* Git and GitHub workflow
 
-- Only supports `1. Question` / `Ans: Answer` format
-- No OCR — text-based PDFs only
+## Author
+
+Akash Dubey
