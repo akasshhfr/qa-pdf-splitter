@@ -32,7 +32,7 @@ function MergeUpload() {
     formData.append('answer_file', answersFile)
 
     try {
-      const response = await fetch('http://localhost:8000/merge', {
+      const response = await fetch('https://qa-pdf-splitter.onrender.com/merge', {
         method: 'POST',
         body: formData,
       })

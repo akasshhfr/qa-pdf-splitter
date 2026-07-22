@@ -45,9 +45,8 @@ if __name__ == "__main__":
     main()
 
 
-# task1: to sort the questions and answers in serial number ✅
-# task2: i give questions and answers seperrately, it should combine them with the correct answer match (given serial number for bith Q & A)
+# task1: to sort the questions and answers in serial number (done already)
+# task2: i give questions and answers pdf seperrately, it should combine them with the correct answer match (given serial number for both Q & A)
 # task3: task2 should also be in sorted order, numerically
-# task4: make a question paper generator
-# task5: calculate the time taken to seperate/merge 2000 questions with answers of 7 lines each (make a noting of time taken to seperate or merge)
-# task6: try to make task5 efficient 
+# task4: calculate the time taken to seperate/merge 2000 questions (if given) with answers of 7 lines each (make a noting of time taken to seperate or merge)
+# task5: try to make task5 efficient 
