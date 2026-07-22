@@ -38,7 +38,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        © 2026 w/AD
+        © 2026 Q&A Splitter/Merger™ | All Rights Reserved.
       </footer>
     </div>
   )
