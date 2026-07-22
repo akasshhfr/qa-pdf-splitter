@@ -38,7 +38,6 @@ function App() {
       </main>
 
       <footer className="footer">
-        Built with FastAPI & React 
         © 2026 w/AD
       </footer>
     </div>
