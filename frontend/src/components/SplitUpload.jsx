@@ -53,7 +53,7 @@ function SplitUpload() {
   return (
     <div className="card">
       <p className="card-description">
-        Upload a PDF with numbered questions and <strong>Ans:</strong> answers. 
+        Upload a PDF with numbered questions and (Ans:) answers. 
         We'll create two separate PDFs — one with questions only, one with answers only.
       </p>
 

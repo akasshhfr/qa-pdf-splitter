@@ -1,25 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* ===== CSS VARIABLES (Design Tokens) ===== */
 :root {
-  --bg-primary: #0a0a1a;
-  --bg-card: rgba(255, 255, 255, 0.05);
-  --bg-card-hover: rgba(255, 255, 255, 0.08);
-  --text-primary: #f0f0f0;
-  --text-secondary: #a0a0c0;
-  --text-muted: #6a6a8a;
-  --accent-purple: #8b5cf6;
-  --accent-blue: #3b82f6;
-  --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
-  --error-color: #ef4444;
-  --success-color: #22c55e;
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(139, 92, 246, 0.4);
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-muted: #7a7a9a;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --error-color: #dc2626;
+  --error-bg: rgba(220, 38, 38, 0.08);
+  --success-color: #16a34a;
+  --success-bg: rgba(22, 163, 74, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --border-color: rgba(0, 0, 0, 0.08);
   --radius-md: 12px;
   --radius-lg: 16px;
-  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
 }
+
 /* ===== RESET ===== */
 *,
 *::before,
@@ -28,33 +27,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /* ===== BODY ===== */
 body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(160deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
-  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+
+  /* Soft blue-white gradient */
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(168, 198, 255, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(147, 197, 253, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(196, 181, 253, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(253, 224, 186, 0.25) 0%, transparent 40%),
+    linear-gradient(135deg, #f0f4ff 0%, #e8eeff 30%, #f5f0ff 60%, #fef9f3 100%);
+  background-attachment: fixed;
 }
+
 /* ===== ROOT CONTAINER ===== */
 #root {
   min-height: 100vh;
   display: flex;
   justify-content: center;
 }
+
 /* ===== LOADING SPINNER ===== */
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
+
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
   border-top-color: white;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s linear infinite;
   display: inline-block;
   vertical-align: middle;
   margin-right: 8px;

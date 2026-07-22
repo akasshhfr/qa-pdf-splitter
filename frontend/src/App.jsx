@@ -19,7 +19,7 @@ function App() {
 
       <div className='tabs'> 
         <button
-        className={`tab ${activeTab} === 'split' ? 'active' : ' '}`}
+        className={`tab ${activeTab === 'split' ? 'active' : ''}`}
         onClick={() => setActiveTab('split')}
         > 
          ✂️ Split PDF
